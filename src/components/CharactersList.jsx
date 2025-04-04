@@ -5,7 +5,9 @@ function CharacterList({ charactersData }) {
     <section>
       <ul>
         {charactersData.map((character) => {
-          return <CharacterCard characterData={character} key={character.id} />;
+          return (
+            <CharacterCard charactersData={character} key={character.id} />
+          );
         })}
       </ul>
     </section>
