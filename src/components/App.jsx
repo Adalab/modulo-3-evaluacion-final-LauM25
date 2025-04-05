@@ -3,6 +3,9 @@ import CharactersList from "./CharactersList";
 import getCharactersFromAPI from "../services/getCharactersFromApi";
 import Filters from "./Filters";
 import { useEffect, useState } from "react";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
+import CharacterDetail from "./CharacterDetail";
+import header from "../images/rick-and-morty.png";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -19,12 +22,45 @@ function App() {
   const filteredCharacters = characters.filter((character) => {
     return character.character.toLowerCase().includes(filterName.toLowerCase());
   });
+  const { pathname } = useLocation();
+
+  const routeData = matchPath("/detail/:id", pathname);
+
+  let idCharacterRoute = undefined;
+  if (routeData !== null) {
+    idCharacterRoute = parseInt(routeData.params.id);
+  }
+  //console.log("Este es el routeid" + " " + idCharacterRoute);
+
+  const characterSelected = filteredCharacters.find((character) => {
+    return character.id === idCharacterRoute;
+  });
+
+  //console.log(characterSelected);
 
   return (
     <>
-      <h1>Rick and Morty</h1>
-      <Filters onChangeName={changeName} />
-      <CharactersList charactersData={filteredCharacters} />
+      <div className="header">
+        <img src={header} alt="Rick and Morty" />
+      </div>
+
+      <main className="main">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Filters onChangeName={changeName} />
+                <CharactersList charactersData={filteredCharacters} />
+              </>
+            }
+          />
+          <Route
+            path="/detail/:id"
+            element={<CharacterDetail character={characterSelected} />}
+          />
+        </Routes>
+      </main>
     </>
   );
 }

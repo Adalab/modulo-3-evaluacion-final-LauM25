@@ -9,7 +9,10 @@ const getCharactersFromApi = () => {
                     character: character.name,
                     urlImage: character.image,
                     species: character.species,
-                    id: character.id
+                    id: character.id,
+                    status: character.status,
+                    origin: character.origin.name,
+                    episodes: character.episode.length
                 }
             })
             return parseCharacters;
