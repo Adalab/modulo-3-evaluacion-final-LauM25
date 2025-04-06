@@ -4,15 +4,21 @@ function CharacterDetail({ character }) {
     <>
       <div>
         <Link to="/">
-          <p>Volver</p>
+          <p className="back">Back</p>
         </Link>
-        <div>
-          <img src={character.urlImage} alt={character.character} />
-          <h3>Character:{character.character}</h3>
-          <p>Status:{character.status}</p>
-          <p>Species:{character.species}</p>
-          <p>Origin:{character.origin}</p>
-          <p>Episodes:{character.episodes}</p>
+        <div className="cardDetail">
+          <img
+            className="cardDetail-img"
+            src={character.urlImage}
+            alt={character.character}
+          />
+          <div className="cardDetail-txt">
+            <h3>Character:{character.character}</h3>
+            <p>Status:{character.status}</p>
+            <p>Species:{character.species}</p>
+            <p>Origin:{character.origin}</p>
+            <p>Episodes:{character.episodes}</p>
+          </div>
         </div>
       </div>
     </>
