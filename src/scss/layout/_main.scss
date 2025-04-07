@@ -87,7 +87,7 @@ body{
 }
 .cardDetail-img{
     width: 400px;
-    background-color: #009bb7;;
+    background-color: #009bb7;
     clip-path: polygon(81% 4%, 60% 0, 44% 4%, 26% 0, 11% 5%, 0 0, 5% 17%, 0 30%, 4% 48%, 0 65%, 7% 80%, 0 100%, 17% 94%, 32% 100%, 47% 95%, 64% 100%, 78% 96%, 100% 100%, 95% 84%, 100% 70%, 94% 53%, 100% 38%, 96% 21%, 100% 0);
 }
 .back{
@@ -97,3 +97,21 @@ body{
     padding-bottom:5px;
 
 }
+.back:hover{
+    color: #047a8f;
+}
+@media (max-width: 820px){
+    .cardDetail{
+        flex-direction: column;
+        padding:20px;
+        justify-content: center;
+    align-items: center;
+    }
+    .cardDetail-img{
+        width:200px;
+    }
+    .cardDetail-txt{
+        padding:20px;
+    }
+}
+
